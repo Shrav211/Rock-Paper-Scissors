@@ -53,25 +53,49 @@ function playRound(playerSelection, getComputerChoice){
 
 //make a function that takes the input from the user
 
-function playerSelectionFn() {
-    let playerSelection = prompt('Enter your choice!');
-    return playerSelection;
-}
+const btn = document.querySelector('#btn');
+btn.addEventListener('click', function (e) {
+    let playerSelection = "rock";
+    let computerSelection = getComputerChoice();
+    playRound(playerSelection, computerSelection);
 
+    content.textContent = `The player's score is ${playerScore} and the computer's score is ${computerScore}`;
+    container.appendChild(content);
+
+    console.log(`The player's score is ${playerScore} and the computer's score is ${computerScore}`);
+
+    if (playerScore == 5 || computerScore == 5) {
+        content1.textContent = `The player's score is ${playerScore} and the computer's score is ${computerScore}`;
+        container.appendChild(content1);
+    }
+});
+
+
+const container = document.querySelector('#container');
+
+const content = document.createElement('div');
+const content1 = document.createElement('div');
+content.classList.add('content');
+content1.classList.add('content1');
+content.textContent = `The player's score is ${playerScore} and the computer's score is ${computerScore}`;
+
+container.appendChild(content);
+// console.log($(playerScore))
 //make a function that run the playRound function 5 times
 
-function game(){
-    for (let i = 1; i <= 5; i++){
-        let playerSelection = playerSelectionFn();
-        let computerSelection = getComputerChoice();
-        console.log(playRound(playerSelection, computerSelection));
-    }
-}
+// function game(){
+    
+//     let playerSelection = playerSelectionFn();
+//     let computerSelection = getComputerChoice();
+//     console.log(playRound(playerSelection, computerSelection));
 
-game();
-console.log(`The player's final score is ${playerScore} and the computer's final score is ${computerScore}`);
+// }
 
-if (playerScore > computerScore) {
+// game();
+
+console.log("hello");
+
+if (playerScore < computerScore) {
     console.log('The Player has Won');
 } else if(playerScore == computerScore){
     console.log("It's a Tie");
